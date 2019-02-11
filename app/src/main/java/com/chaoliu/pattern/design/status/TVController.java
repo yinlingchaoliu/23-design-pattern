@@ -11,11 +11,14 @@ public class TVController implements ITvStatus,IPowerController{
     @Override
     public void powerOn() {
         setmTvStatus( new PowerOnState() );
+        System.out.println("开机");
     }
 
     @Override
     public void powerOff() {
         setmTvStatus( new PowerOffState() );
+        System.out.println("关机");
+
     }
 
     @Override
