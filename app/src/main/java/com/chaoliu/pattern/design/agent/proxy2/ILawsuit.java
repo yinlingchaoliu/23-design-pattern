@@ -1,4 +1,4 @@
-package com.chaoliu.pattern.design.agent.proxy1;
+package com.chaoliu.pattern.design.agent.proxy2;
 
 public interface ILawsuit {
 
