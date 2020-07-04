@@ -44,25 +44,26 @@ public class DynamicProxy {
     }
 
     /**
-     * 缺点:不准确 interface获取，不能指定
-     *
+     * 需要那个接口 泛型指向那个
      * @param newInstance
      * @param <T>
      * @return
      */
     public static <T> T create(final Object newInstance) {
+
         InvocationHandler proxy = new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 return method.invoke( newInstance, args );
             }
         };
-        //获得实体类接口
-        Class interfaceClazz = newInstance.getClass().getInterfaces()[0];
+
+        //获得接口列表
+        Class[] ifaces = newInstance.getClass().getInterfaces();
         //获取实体类classLoader
         ClassLoader loader = newInstance.getClass().getClassLoader();
         //获得动态代理实例
-        return (T) Proxy.newProxyInstance( loader, new Class[]{interfaceClazz}, proxy );
+        return (T) Proxy.newProxyInstance( loader, ifaces, proxy );
     }
 
 }

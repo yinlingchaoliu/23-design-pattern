@@ -1,6 +1,6 @@
 package com.chaoliu.pattern.design.agent.proxy2;
 
-public class XiaoMin implements ILawsuit {
+public class XiaoMin implements ILawsuit,IArgue {
 
     @Override
     public void submit() {
@@ -21,9 +21,16 @@ public class XiaoMin implements ILawsuit {
     }
 
     @Override
+    public void argue() {
+        //认怂
+        System.out.println( "证据确凿，我认怂！" );
+    }
+
+    @Override
     public void finish() {
         //结果
         System.out.println( "诉讼成功，判决老板即日起七天内结算工资！" );
     }
+
 
 }
